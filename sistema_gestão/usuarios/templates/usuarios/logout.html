@@ -1,0 +1,14 @@
+{% extends 'controle/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container logout-page">
+    <div class="logout-content">
+        <h1>Você saiu do sistema</h1>
+        <p>Obrigado por usar nosso sistema. Se desejar fazer login novamente, clique no botão abaixo.</p>
+        <form method="POST">
+            {% csrf_token %}
+            <a href="{% url 'login' %}" class="btn btn-primary">Fazer login novamente</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

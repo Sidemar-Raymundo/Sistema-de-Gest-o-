@@ -1,0 +1,67 @@
+{% extends "controle/base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Meus filmes - Sidemar Raymundo</h1>
+    <a class="btn btn-primary" href="{% url 'novo_item' %}">Novo Item</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>filme</th>
+                <th>finalizado</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dado in dados %}
+            <tr>
+                <td>{{ dado.id }}</td>
+                <td>{{ dado.filme }}</td>
+                <td>{{ dado.finalizado }}</td>
+                <td>
+                    <a class="btn btn-info" style="color: white;" href="{% url 'detalhe' dado.id %}">Detalhe</a>
+                </td>
+                <td>
+                    <a class="btn btn-warning" style="color: white;" href="{% url 'editar' dado.id %}">Editar</a>
+                </td>
+                <td>
+                    <button class="btn btn-danger">
+                        <a style='color: white;'  href="{% url 'excluir' dado.id %}">Excluir</a>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+
+<!-- segunda opcão de codigo:  -->
+
+<!-- <h1>Meus filmes - Sidemar Raymundo</h1>
+<button><a href="{% url 'novo_item' %}">Novo Item</a></button>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>filme</th>
+        <th>finalizado</th> 
+        <th></th> 
+
+    </tr>
+    {% for dado in dados %}
+    <tr>
+        <td>{{ dado.id }}</td>
+        <td>{{ dado.filme }}</td>
+        <td>{{ dado.finalizado }}</td>
+        <td></td>
+        <td><button><a href="{% url 'detalhe' dado.id %}">Detalhe</a></button></td>
+        <td><button><a href="{% url 'editar' dado.id %}">Editar</a></button></td>
+        <td><button><a href="{% url 'excluir' dado.id %}">Excluir</a></button></td>
+    <tr>
+    {% endfor %}
+</table> -->
+
